@@ -2,8 +2,8 @@
 
 SCRIPT_NAME="tf"
 SCRIPT_URL="https://raw.githubusercontent.com/yasakei/theFont/main/tf.py"
-VERSION="V3"
-BRANCH="Alpha"
+VERSION="V2"
+BRANCH="Beta"
 
 ASCII_CAT=f"
  /\_/\  
