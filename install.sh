@@ -2,11 +2,12 @@
 
 SCRIPT_NAME="tf"
 SCRIPT_URL="https://raw.githubusercontent.com/yasakei/theFont/main/tf.py"
-VERSION="V2"
+VERSION="V3"
+BRANCH="Alpha"
 
-ASCII_CAT="
+ASCII_CAT=f"
  /\_/\  
-( o.o )  theFont
+( o.o )  theFont ${VERSION} ${BRANCH}
  > ^ <  
 "
 
@@ -44,6 +45,7 @@ install() {
 
         echo "Installing Python libs with pip..."
         pip3 install --user requests beautifulsoup4 tqdm
+        pip3 install --user "urllib3<2" # Fix for urllib3 v2 and LibreSSL compatibility
         
         SHELL_RC="$HOME/.zshrc" # Defaulting to .zshrc for modern macOS
         if [[ "$SHELL" == *"bash"* ]]; then
@@ -59,9 +61,11 @@ install() {
             echo "Detected Arch Linux."
             echo "Installing Python libs with pip using --break-system-packages..."
             pip install --break-system-packages --user requests beautifulsoup4 tqdm
+            pip install --break-system-packages --user "urllib3<2" # Fix for urllib3 v2 and LibreSSL compatibility
         else
             echo "Non-Arch system detected. Installing Python libs with pip --user..."
             pip install --user requests beautifulsoup4 tqdm
+            pip install --user "urllib3<2" # Fix for urllib3 v2 and LibreSSL compatibility
         fi
         
         SHELL_RC="$HOME/.bashrc"
