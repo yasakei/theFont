@@ -1,0 +1,244 @@
+:root {
+    --background: #121212;
+    --surface: #1e1e1e;
+    --primary: #bb86fc;
+    --secondary: #03dac6;
+    --on-background: #e0e0e0;
+    --on-surface: #cccccc;
+    --terminal-header: #2d2d2d;
+    --terminal-body: #1a1a1a;
+    --red-dot: #ff5f56;
+    --yellow-dot: #ffbd2e;
+    --green-dot: #27c93f;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background);
+    color: var(--on-background);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+header {
+    padding: 1rem 5%;
+    border-bottom: 1px solid var(--surface);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.button {
+    background-color: var(--primary);
+    color: var(--background);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: 700;
+    transition: transform 0.2s ease;
+}
+
+.button:hover {
+    transform: scale(1.05);
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--on-surface);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.fake-terminal {
+    max-width: 700px;
+    margin: 2rem auto 0;
+    border: 1px solid var(--surface);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: left;
+}
+
+.terminal-header {
+    background-color: var(--terminal-header);
+    padding: 0.5rem 1rem;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.terminal-header span:not(.dot) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #aaa;
+    font-family: 'Fira Code', monospace;
+}
+
+.dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+.dot.red { background-color: var(--red-dot); }
+.dot.yellow { background-color: var(--yellow-dot); }
+.dot.green { background-color: var(--green-dot); }
+
+.terminal-body {
+    background-color: var(--terminal-body);
+    padding: 1.5rem;
+    font-family: 'Fira Code', monospace;
+    color: #fff;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    min-height: 80px;
+}
+
+.prompt {
+    color: var(--secondary);
+    margin-right: 0.5rem;
+}
+
+#terminal-text::after {
+    content: '▋';
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.features {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    text-align: left;
+}
+
+.feature-card {
+    background-color: var(--surface);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.feature-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.install-section {
+    padding: 4rem 0;
+    text-align: center;
+    background-color: var(--surface);
+    margin: 0 -5%; /* Extend background to screen edges */
+    padding: 4rem 5%;
+}
+
+.install-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.code-block {
+    background-color: var(--terminal-body);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    max-width: 700px;
+    margin: 1rem auto;
+    font-family: 'Fira Code', monospace;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+
+#copy-button {
+    background: var(--primary);
+    color: var(--background);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.2s;
+}
+
+#copy-button:hover {
+    background: var(--secondary);
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid var(--surface);
+    color: var(--on-surface);
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .code-block {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
