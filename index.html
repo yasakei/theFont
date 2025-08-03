@@ -1,79 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>theFont - Simple Font Installer</title>
-    <link rel="stylesheet" href="src/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Fira+Code&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>theFont - Simple Font Installer</title>
+
+  <!-- Tailwind CSS (CDN for demo; use a proper build for production) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Config for fonts -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            mono: ['Fira Code', 'ui-monospace', 'SFMono-Regular', 'monospace']
+          },
+          colors: {
+            primary: {
+              DEFAULT: '#4F46E5', // indigo-600
+              dark: '#4338CA',     // indigo-700
+              light: '#6366F1'     // indigo-500
+            }
+          },
+          boxShadow: {
+            'soft': '0 10px 30px rgba(0,0,0,0.08)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code&display=swap" rel="stylesheet"/>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
 </head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">theFont</div>
-            <a href="#install" class="button">Install Now</a>
-        </nav>
-    </header>
+<body class="bg-neutral-950 text-neutral-100 font-sans antialiased">
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-neutral-950/70">
+    <nav class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center">
+          <i data-lucide="type" class="w-5 h-5 text-primary"></i>
+        </div>
+        <span class="text-lg font-bold tracking-tight">theFont</span>
+      </div>
+      <a href="#install" class="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold hover:bg-primary.dark transition-colors">
+        <i data-lucide="download" class="w-4 h-4"></i>
+        Install Now
+      </a>
+    </nav>
+  </header>
 
-    <main>
-        <section class="hero">
-            <h1>The last font installer you'll ever need.</h1>
-            <p class="subtitle">A clean and minimalistic CLI tool to easily download and install fonts from the web.</p>
-            <div class="hero-image">
-                <div class="fake-terminal" id="terminal">
-                    <div class="terminal-header">
-                        <div class="dots">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                        <span>bash</span>
-                    </div>
-                    <div class="terminal-body">
-                        <p><span class="prompt">$</span> <span id="terminal-text"></span></p>
-                    </div>
-                </div>
+  <main>
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <!-- Subtle gradient background -->
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent"></div>
+
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-16 pb-10 sm:pt-24 sm:pb-16">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+              The last font installer you’ll ever need.
+            </h1>
+            <p class="mt-4 text-neutral-300 text-lg">
+              A clean and minimalistic CLI tool to easily download and install fonts from the web.
+            </p>
+            <div class="mt-8 flex flex-wrap items-center gap-3">
+              <a href="#install" class="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold hover:bg-primary.dark transition-colors">
+                <i data-lucide="terminal" class="w-4 h-4"></i>
+                Get Started
+              </a>
+              <a href="https://github.com/yasakei/theFont" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold border border-neutral-800 hover:border-neutral-700 hover:bg-neutral-900 transition">
+                <i data-lucide="github" class="w-4 h-4"></i>
+                GitHub
+              </a>
             </div>
-        </section>
+          </div>
 
-        <section class="features">
-            <h2>Why theFont?</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3>One-Command Install</h3>
-                    <p>Install any font from daFont or 1001fonts with a single, simple command.</p>
+          <!-- Fake Terminal -->
+          <div class="relative">
+            <div class="rounded-xl border border-neutral-800 bg-neutral-900/60 backdrop-blur shadow-soft overflow-hidden">
+              <div class="flex items-center justify-between px-4 py-2 border-b border-neutral-800">
+                <div class="flex items-center gap-2">
+                  <span class="inline-block h-3 w-3 rounded-full bg-red-500/80"></span>
+                  <span class="inline-block h-3 w-3 rounded-full bg-yellow-500/80"></span>
+                  <span class="inline-block h-3 w-3 rounded-full bg-green-500/80"></span>
                 </div>
-                <div class="feature-card">
-                    <h3>Fully Automated</h3>
-                    <p>Handles downloading, extracting, and caching automatically. No manual steps needed.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Cross-Platform</h3>
-                    <p>Works seamlessly on both Linux and macOS, installing fonts to the correct user directory.</p>
-                </div>
-                 <div class="feature-card">
-                    <h3>Lightweight & Fast</h3>
-                    <p>A simple script with no heavy dependencies. Installs fonts in seconds.</p>
-                </div>
+                <div class="text-xs text-neutral-400">bash</div>
+              </div>
+              <div class="p-4 font-mono text-sm text-neutral-200">
+                <p><span class="text-primary-light">$</span> <span id="terminal-text"></span><span class="animate-pulse">▋</span></p>
+              </div>
             </div>
-        </section>
+            <!-- Glow -->
+            <div aria-hidden="true" class="absolute -inset-x-5 -bottom-10 blur-3xl opacity-30 bg-primary/30 h-28 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <section id="install" class="install-section">
-            <h2>Get Started</h2>
-            <p>Copy and paste this command into your terminal to install theFont.</p>
-            <div class="code-block">
-                <code>bash &lt;(curl -sL https://raw.githubusercontent.com/yasakei/theFont/main/install.sh)</code>
-                <button id="copy-button">Copy</button>
-            </div>
-        </section>
-    </main>
+    <!-- Features -->
+    <section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Why theFont?</h2>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-xl border border-neutral-800 bg-neutral-900 p-6 hover:border-neutral-700 transition">
+          <div class="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+            <i data-lucide="zap" class="w-5 h-5 text-primary"></i>
+          </div>
+          <h3 class="font-semibold text-lg">One-Command Install</h3>
+          <p class="mt-2 text-neutral-300">Install any font from daFont or 1001fonts with a single, simple command.</p>
+        </div>
+        <div class="rounded-xl border border-neutral-800 bg-neutral-900 p-6 hover:border-neutral-700 transition">
+          <div class="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+            <i data-lucide="cog" class="w-5 h-5 text-primary"></i>
+          </div>
+          <h3 class="font-semibold text-lg">Fully Automated</h3>
+          <p class="mt-2 text-neutral-300">Handles downloading, extracting, and caching automatically. No manual steps needed.</p>
+        </div>
+        <div class="rounded-xl border border-neutral-800 bg-neutral-900 p-6 hover:border-neutral-700 transition">
+          <div class="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+            <i data-lucide="layers" class="w-5 h-5 text-primary"></i>
+          </div>
+          <h3 class="font-semibold text-lg">Cross-Platform</h3>
+          <p class="mt-2 text-neutral-300">Works seamlessly on both Linux and macOS, installing fonts to the correct user directory.</p>
+        </div>
+        <div class="rounded-xl border border-neutral-800 bg-neutral-900 p-6 hover:border-neutral-700 transition">
+          <div class="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+            <i data-lucide="feather" class="w-5 h-5 text-primary"></i>
+          </div>
+          <h3 class="font-semibold text-lg">Lightweight & Fast</h3>
+          <p class="mt-2 text-neutral-300">A simple script with no heavy dependencies. Installs fonts in seconds.</p>
+        </div>
+      </div>
+    </section>
 
-    <footer>
-        <p>Made with 💖 by <a href="https://github.com/yasakei" target="_blank">@yasakei</a></p>
-    </footer>
+    <!-- Install -->
+    <section id="install" class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pb-20">
+      <div class="rounded-2xl border border-neutral-800 bg-neutral-900 p-8">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Get Started</h2>
+        <p class="mt-2 text-neutral-300">Copy and paste this command into your terminal to install theFont.</p>
 
-    <script src="src/script.js"></script>
+        <div class="mt-6 relative">
+          <div class="rounded-xl border border-neutral-800 bg-neutral-950 p-4 overflow-x-auto">
+            <code id="install-code" class="font-mono text-sm text-neutral-200 select-all">
+bash <(curl -sL https://raw.githubusercontent.com/yasakei/theFont/main/install.sh)
+            </code>
+          </div>
+          <button id="copy-button" class="absolute top-2 right-2 inline-flex items-center gap-2 rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-1.5 text-xs font-medium hover:bg-neutral-800 transition">
+            <i data-lucide="copy" class="w-4 h-4"></i>
+            Copy
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-neutral-900">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 flex items-center justify-between">
+      <p class="text-neutral-400 text-sm">
+        Made with 💖 by
+        <a href="https://github.com/yasakei" class="underline hover:text-neutral-300" target="_blank" rel="noopener noreferrer">@yasakei</a>
+      </p>
+      <div class="flex items-center gap-3 text-neutral-500">
+        <i data-lucide="shield" class="w-4 h-4"></i>
+        <span class="text-xs">No heavy dependencies</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Lucide icons
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) window.lucide.createIcons();
+    });
+
+    // Typewriter effect for terminal
+    const cmd = 'tf https://www.dafont.com/super-adorable.font';
+    const terminalText = document.getElementById('terminal-text');
+    let i = 0;
+    function type() {
+      if (!terminalText) return;
+      if (i <= cmd.length) {
+        terminalText.textContent = cmd.slice(0, i);
+        i++;
+        setTimeout(type, 60);
+      } else {
+        // brief pause then loop
+        setTimeout(() => {
+          i = 0;
+          terminalText.textContent = '';
+          setTimeout(type, 500);
+        }, 1500);
+      }
+    }
+    type();
+
+    // Copy button functionality
+    const copyBtn = document.getElementById('copy-button');
+    const codeEl = document.getElementById('install-code');
+    if (copyBtn && codeEl) {
+      copyBtn.addEventListener('click', async () => {
+        try {
+          const text = codeEl.textContent.trim();
+          await navigator.clipboard.writeText(text);
+          copyBtn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i>Copied';
+          if (window.lucide) window.lucide.createIcons();
+          setTimeout(() => {
+            copyBtn.innerHTML = '<i data-lucide="copy" class="w-4 h-4"></i>Copy';
+            if (window.lucide) window.lucide.createIcons();
+          }, 1500);
+        } catch (e) {
+          console.error('Copy failed', e);
+        }
+      });
+    }
+  </script>
 </body>
 </html>
