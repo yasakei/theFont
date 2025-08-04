@@ -84,20 +84,27 @@ try {
     Write-Progress -Activity "Installing font" -Status "Finding fonts" -PercentComplete 50
     $fontFiles = Get-ChildItem -Path $tempDir -Recurse -Include "*.ttf","*.otf"
     if (-not $fontFiles) { throw "No font files found" }
-# Install fonts
-Write-Progress -Activity "Installing font" -Status "Installing" -PercentComplete 75
-$installed = 0
-$failed = 0
+    
+    # Install fonts
+    Write-Progress -Activity "Installing font" -Status "Installing" -PercentComplete 75
+    $installed = 0
+    $failed = 0
 
-foreach ($fontFile in $fontFiles) {
-    try {
-        Install-Font $fontFile.FullName
-        $installed++
+    foreach ($fontFile in $fontFiles) {
+        try {
+            Install-Font $fontFile.FullName
+            $installed++
+        }
+        catch {
+            $failed++
+            Write-Debug "Failed to install $($fontFile.Name): $_"
+        }
     }
-    catch {
-        $failed++
-        Write-Debug "Failed to install $($fontFile.Name): $_"
-    }
+}
+catch {
+    Write-Host "❌ Installation failed: $_"
+    if (Test-Path $tempDir) { Remove-Item $tempDir -Recurse -Force -ErrorAction SilentlyContinue }
+    exit 1
 }
 
 # Cleanup
