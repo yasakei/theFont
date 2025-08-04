@@ -2,12 +2,12 @@
 
 SCRIPT_NAME="tf"
 SCRIPT_URL="https://raw.githubusercontent.com/yasakei/theFont/main/tf.py"
-VERSION="V2"
-BRANCH="Beta"
+VERSION="V4"
+CHANNEL="Alpha"
 
 ASCII_CAT=f"
  /\_/\  
-( o.o )  theFont ${VERSION} ${BRANCH}
+( o.o )  theFont ${VERSION} ${CHANNEL}
  > ^ <  
 "
 
