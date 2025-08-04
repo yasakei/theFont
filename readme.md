@@ -1,4 +1,4 @@
-# theFont — simple font installer
+# theFont — simple font installer (Under Development)
 
 ## 🌟 What is this?
 `theFont` is a clean and minimalistic CLI tool to download and install fonts from [daFont.com](https://www.dafont.com) and [1001fonts.com](https://www.1001fonts.com) with a single command.
