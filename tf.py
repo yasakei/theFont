@@ -81,9 +81,35 @@ elif 'fontlib.com' in domain:
     else:
         print(f"❌ Invalid FontLib URL format. Expected: https://fontlib.com/font/font-name.html")
         sys.exit(1)
+elif 'fontget.com' in domain:
+    # FontGet URLs are like: https://www.fontget.com/font/font-name/
+    if '/font/' in url:
+        font_slug = url.rstrip('/').split('/')[-1]
+        if not font_slug:  # Handle trailing slash case
+            font_slug = url.rstrip('/').split('/')[-2]
+        download_url = f"https://www.fontget.com/download/{font_slug}"
+    else:
+        print(f"❌ Invalid FontGet URL format. Expected: https://www.fontget.com/font/font-name/")
+        sys.exit(1)
+elif 'befonts.com' in domain:
+    # BeFonts URLs are like: https://befonts.com/font-name.html
+    if url.endswith('.html'):
+        font_slug = url.rstrip('/').split('/')[-1].replace('.html', '')
+        download_url = f"https://befonts.com/download/{font_slug}.zip"
+    else:
+        print(f"❌ Invalid BeFonts URL format. Expected: https://befonts.com/font-name.html")
+        sys.exit(1)
+elif 'netfonts.com' in domain:
+    # NetFonts URLs are like: https://www.netfonts.com/fonts/font-name
+    if '/fonts/' in url:
+        font_slug = url.rstrip('/').split('/')[-1]
+        download_url = f"https://www.netfonts.com/download/{font_slug}.zip"
+    else:
+        print(f"❌ Invalid NetFonts URL format. Expected: https://www.netfonts.com/fonts/font-name")
+        sys.exit(1)
 else:
     print(f"❌ Unsupported font website: {domain}")
-    print("Supported sites: dafont.com, 1001fonts.com, fontsquirrel.com, urbanfonts.com, abstractfonts.com, fontspace.com, fontlib.com")
+    print("Supported sites: dafont.com, 1001fonts.com, fontsquirrel.com, urbanfonts.com, abstractfonts.com, fontspace.com, fontlib.com, fontget.com, befonts.com, netfonts.com")
     sys.exit(1)
 
 

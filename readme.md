@@ -1,7 +1,7 @@
 # theFont — simple font installer for Linux and macOS
 
 ## 🌟 What is this?
-`theFont` is a clean and minimalistic CLI tool to easily download and install fonts from multiple font services including [daFont.com](https://www.dafont.com), [1001fonts.com](https://www.1001fonts.com), [FontSquirrel](https://www.fontsquirrel.com), [Urban Fonts](https://www.urbanfonts.com), [Abstract Fonts](https://www.abstractfonts.com), [Font Space](https://www.fontspace.com), and [FontLib](https://fontlib.com).
+`theFont` is a clean and minimalistic CLI tool to easily download and install fonts from multiple font services including [daFont.com](https://www.dafont.com), [1001fonts.com](https://www.1001fonts.com), [FontSquirrel](https://www.fontsquirrel.com), [Urban Fonts](https://www.urbanfonts.com), [Abstract Fonts](https://www.abstractfonts.com), [Font Space](https://www.fontspace.com), [FontLib](https://fontlib.com), [FontGet](https://www.fontget.com), [BeFonts](https://befonts.com), and [NetFonts](https://www.netfonts.com).
 
 ## 🚀 Install
 
@@ -32,6 +32,15 @@ tf https://www.fontspace.com/roboto-font-f43234
 
 # FontLib
 tf https://fontlib.com/font/arial.html
+
+# FontGet
+tf https://www.fontget.com/font/roboto/
+
+# BeFonts
+tf https://befonts.com/awesome-font.html
+
+# NetFonts
+tf https://www.netfonts.com/fonts/arial-bold
 ```
 
 ## 🔧 Features
@@ -44,6 +53,9 @@ tf https://fontlib.com/font/arial.html
   * **Abstract Fonts** - Creative and artistic fonts
   * **Font Space** - Large font repository
   * **FontLib** - Professional font library
+  * **FontGet** - Free font downloads
+  * **BeFonts** - Beautiful and modern fonts
+  * **NetFonts** - Network of premium fonts
 * Downloads + extracts + caches automatically
 * No sudo needed, installs to `~/.local/share/fonts` (Linux) or `~/Library/Fonts` (macOS)
 
