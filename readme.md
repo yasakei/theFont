@@ -1,7 +1,7 @@
 # theFont — simple font installer for Linux and macOS
 
 ## 🌟 What is this?
-`theFont` is a clean and minimalistic CLI tool to easily download and install fonts from [daFont.com](https://www.dafont.com) and [1001fonts.com](https://www.1001fonts.com).
+`theFont` is a clean and minimalistic CLI tool to easily download and install fonts from multiple font services including [daFont.com](https://www.dafont.com), [1001fonts.com](https://www.1001fonts.com), [FontSquirrel](https://www.fontsquirrel.com), [Urban Fonts](https://www.urbanfonts.com), [Abstract Fonts](https://www.abstractfonts.com), [Font Space](https://www.fontspace.com), and [FontLib](https://fontlib.com).
 
 ## 🚀 Install
 
@@ -12,13 +12,38 @@ bash <(curl -sL https://raw.githubusercontent.com/yasakei/theFont/main/install.s
 ## 💻 Usage
 
 ```bash
+# DaFont
 tf https://www.dafont.com/super-adorable.font
+
+# 1001 Fonts
 tf https://www.1001fonts.com/your-font-name-font.html
+
+# FontSquirrel
+tf https://www.fontsquirrel.com/fonts/open-sans
+
+# Urban Fonts
+tf https://www.urbanfonts.com/fonts/Roboto.htm
+
+# Abstract Fonts
+tf https://www.abstractfonts.com/font/helvetica-neue
+
+# Font Space
+tf https://www.fontspace.com/roboto-font-f43234
+
+# FontLib
+tf https://fontlib.com/font/arial.html
 ```
 
 ## 🔧 Features
 
-* Installs any font from daFont or 1001fonts with a single command
+* Installs fonts from multiple font services with a single command:
+  * **DaFont** - Free fonts for download
+  * **1001 Fonts** - Comprehensive font collection
+  * **FontSquirrel** - High-quality free fonts
+  * **Urban Fonts** - Modern and urban typography
+  * **Abstract Fonts** - Creative and artistic fonts
+  * **Font Space** - Large font repository
+  * **FontLib** - Professional font library
 * Downloads + extracts + caches automatically
 * No sudo needed, installs to `~/.local/share/fonts` (Linux) or `~/Library/Fonts` (macOS)
 
