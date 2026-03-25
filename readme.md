@@ -12,7 +12,7 @@ bash <(curl -sL https://raw.githubusercontent.com/yasakei/theFont/main/install.s
 
 **Fish:**
 ```fish
-bash <(curl -sL https://raw.githubusercontent.com/yasakei/theFont/main/install.fish)
+curl -sL https://raw.githubusercontent.com/yasakei/theFont/main/install.fish | fish
 ```
 
 ## 💻 Usage
@@ -62,7 +62,7 @@ bash <(curl -sL https://raw.githubusercontent.com/yasakei/theFont/main/install.s
 
 **Fish:**
 ```fish
-bash <(curl -sL https://raw.githubusercontent.com/yasakei/theFont/main/install.fish) --uninstall
+curl -sL https://raw.githubusercontent.com/yasakei/theFont/main/install.fish | fish --uninstall
 ```
 
 ## 👤 Author

@@ -36,15 +36,20 @@ function install
         # macOS
         set INSTALL_PATH "/usr/local/bin"
 
-        if not command -v pip3 > /dev/null 2>&1
-            echo "pip3 not found. Please install Python and pip3."
+        # Detect pip command
+        if command -v pip3 > /dev/null 2>&1
+            set PIP_CMD "pip3"
+        else if command -v pip > /dev/null 2>&1
+            set PIP_CMD "pip"
+        else
+            echo "pip not found. Please install Python and pip."
             echo "You can install it with Homebrew: brew install python"
             exit 1
         end
 
-        echo "Installing Python libs with pip..."
-        pip3 install --user requests beautifulsoup4 tqdm
-        pip3 install --user "urllib3<2" # Fix for urllib3 v2 and LibreSSL compatibility
+        echo "Installing Python libs with $PIP_CMD..."
+        $PIP_CMD install --user requests beautifulsoup4 tqdm
+        $PIP_CMD install --user "urllib3<2" # Fix for urllib3 v2 and LibreSSL compatibility
 
         set SHELL_RC "$HOME/.config/fish/config.fish"
         set PATH_TO_ADD "/usr/local/bin"
@@ -53,15 +58,25 @@ function install
         # Linux
         set INSTALL_PATH "$HOME/.local/bin"
 
+        # Detect pip command
+        if command -v pip3 > /dev/null 2>&1
+            set PIP_CMD "pip3"
+        else if command -v pip > /dev/null 2>&1
+            set PIP_CMD "pip"
+        else
+            echo "pip not found. Please install Python and pip."
+            exit 1
+        end
+
         if grep -qi arch /etc/os-release 2>/dev/null
             echo "Detected Arch Linux."
-            echo "Installing Python libs with pip using --break-system-packages..."
-            pip install --break-system-packages --user requests beautifulsoup4 tqdm
-            pip install --break-system-packages --user "urllib3<2" # Fix for urllib3 v2 and LibreSSL compatibility
+            echo "Installing Python libs with $PIP_CMD using --break-system-packages..."
+            $PIP_CMD install --break-system-packages --user requests beautifulsoup4 tqdm
+            $PIP_CMD install --break-system-packages --user "urllib3<2" # Fix for urllib3 v2 and LibreSSL compatibility
         else
-            echo "Non-Arch system detected. Installing Python libs with pip --user..."
-            pip install --user requests beautifulsoup4 tqdm
-            pip install --user "urllib3<2" # Fix for urllib3 v2 and LibreSSL compatibility
+            echo "Non-Arch system detected. Installing Python libs with $PIP_CMD --user..."
+            $PIP_CMD install --user requests beautifulsoup4 tqdm
+            $PIP_CMD install --user "urllib3<2" # Fix for urllib3 v2 and LibreSSL compatibility
         end
 
         set SHELL_RC "$HOME/.config/fish/config.fish"
