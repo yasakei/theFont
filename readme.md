@@ -5,8 +5,14 @@
 
 ## 🚀 Install
 
+**Bash/Zsh:**
 ```bash
 bash <(curl -sL https://raw.githubusercontent.com/yasakei/theFont/main/install.sh)
+```
+
+**Fish:**
+```fish
+bash <(curl -sL https://raw.githubusercontent.com/yasakei/theFont/main/install.fish)
 ```
 
 ## 💻 Usage
@@ -32,19 +38,31 @@ tf https://www.1001fonts.com/your-font-name-font.html
 
 ## 🐚 Shell Compatibility
 
-`theFont` is designed to work across various shells, including `bash`, `zsh`, and `fish`. The installer attempts to automatically add `~/.local/bin` (Linux) or `/usr/local/bin` (macOS) to your `PATH` in your shell's configuration file (`.bashrc`, `.zshrc`, or `config.fish`).
+`theFont` is designed to work across various shells, including `bash`, `zsh`, and `fish`.
+
+- **Bash/Zsh**: Use `install.sh`
+- **Fish**: Use `install.fish`
+
+The installers attempt to automatically add `~/.local/bin` (Linux) or `/usr/local/bin` (macOS) to your `PATH` in your shell's configuration file (`.bashrc`, `.zshrc`, or `config.fish`).
 
 ### Non-POSIX Terminals
 
-While `theFont` itself is a Python script and should function on most terminals, the `install.sh` script relies on `bash` and standard POSIX commands. If you are using a non-POSIX compliant terminal or shell, you may need to manually execute the commands within `install.sh` or adjust them for your environment.
+While `theFont` itself is a Python script and should function on most terminals, the install scripts (`install.sh` and `install.fish`) rely on `bash` and standard POSIX commands. If you are using a non-POSIX compliant terminal or shell, you may need to manually execute the commands within the install script or adjust them for your environment.
 
 **Note on ASCII Art:** The installer displays a small ASCII art cat. Its appearance may vary or appear broken on some terminals due to font rendering or terminal capabilities. This does not affect the functionality of the installer.
 
 ## 📦 Uninstall
 
 To uninstall, run the installer script with the `-u` or `--uninstall` flag:
+
+**Bash/Zsh:**
 ```bash
 bash <(curl -sL https://raw.githubusercontent.com/yasakei/theFont/main/install.sh) --uninstall
+```
+
+**Fish:**
+```fish
+bash <(curl -sL https://raw.githubusercontent.com/yasakei/theFont/main/install.fish) --uninstall
 ```
 
 ## 👤 Author
